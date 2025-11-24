@@ -20,15 +20,15 @@ def build_interface():
     parser.add_argument(
         '--batch_size', 
         type=int, 
-        default=32, 
-        help='Default: 32'
+        default=64, 
+        help='Default: 64'
     )
 
     parser.add_argument(
         '--learning_rate', 
         type=float, 
-        default=0.0001, 
-        help='Default: 0.0001'
+        default=0.001, 
+        help='Default: 0.001'
     )
     
     parser.add_argument(

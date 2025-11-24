@@ -4,5 +4,6 @@ __pycache__/
 /checkpoints
 .python-version
 .venv
+uv.lock 
 
 summary.py

@@ -23,7 +23,7 @@ def main():
 
     # Select chipset 
     device = torch.device(
-        "cuda:0" if torch.cuda.is_available() else "cpu"
+        "cuda" if torch.cuda.is_available() else "cpu"
     )
 
     # Prepare datasets
@@ -40,7 +40,9 @@ def main():
     # Initialize optimizer
     optimizer = optim.SGD(
         params=model.parameters(), 
-        lr=args.learning_rate
+        lr=args.learning_rate,
+        momentum=0.9,
+        weight_decay=1e-4
     )
     
     images, labels = next(iter(training_loader))
@@ -52,7 +54,7 @@ def main():
     tb.add_graph(model, images)
     
     # Begin training 
-    print("Training Launched ~")
+    print("Training Launched")
     print(f"Device: {device}\n")
 
     final_train_loss: float = run_training_loop(
