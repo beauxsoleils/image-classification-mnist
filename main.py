@@ -28,7 +28,7 @@ def main():
 
     # Prepare datasets
     training_loader, testing_loader = get_dataloaders_mnist(
-        batch_size=8
+        batch_size=args.batch_size
     )
 
     # Define model
