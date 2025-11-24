@@ -10,6 +10,10 @@ for now, you only need to run
 python main.py
 ```
 
+for examining model, datasets and training data run a tensorboard server
+```sh
+tensorboard --logdir runs
+```
 
 with the following optional arguments:
 
@@ -17,9 +21,7 @@ with the following optional arguments:
 [--help] [--epochs EPOCHS] [--learning_rate LEARNING_RATE] [--save SAVE]
 ```
 
-
 ## TODO:
-- Build an interface for performing inference with
 - Build a CNN for more elaborate image classification tasks using the Fashion-MNIST dataset and eventually SVHN.
 
  
