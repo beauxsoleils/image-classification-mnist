@@ -9,16 +9,15 @@ for now, you only need to run
 ```sh
 python main.py
 ```
-
-for examining model, datasets and training data run a tensorboard server
-```sh
-tensorboard --logdir runs
-```
-
 with the following optional arguments:
 
 ```sh
 [--help] [--epochs EPOCHS] [--learning_rate LEARNING_RATE] [--save SAVE]
+```
+
+for examining model, datasets and training data run a tensorboard server
+```sh
+tensorboard --logdir runs
 ```
 
 ## TODO:
