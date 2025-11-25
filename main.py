@@ -9,7 +9,7 @@ import torch, utils
 
 from torch import optim, nn
 from model import Model
-from mnist import get_dataloaders_mnist
+from mnist import get_dataloaders
 from train import run_training_loop, evaluate
 from args import build_interface
 
@@ -27,7 +27,7 @@ def main():
     )
 
     # Prepare datasets
-    training_loader, testing_loader = get_dataloaders_mnist(
+    training_loader, testing_loader = get_dataloaders(
         batch_size=args.batch_size
     )
 

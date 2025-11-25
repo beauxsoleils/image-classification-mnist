@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from torch.nn import Module, Linear, ReLU, Sequential, Flatten
+from torch.nn import Module, Linear, ReLU, Sequential, Flatten, BatchNorm1d, Dropout
 
 class Model(Module):
     """
@@ -12,11 +12,18 @@ class Model(Module):
         super().__init__()
         self.net = Sequential(
             Flatten(),
-            Linear(784, 128), # input layer (784 features) to hidden layer (128 neurons)
+
+            Linear(784, 512), # input layer (784 features) to hidden layer (512 neurons)
+            BatchNorm1d(512), # normalizes each batch’s activations per feature to have zero mean and unit variance. 
             ReLU(), # activation function: rectified linear unit
-            Linear(128, 64), # hidden layer
+            Dropout(0.1), # randomly zeroes a fraction p of activations during training.
+
+            Linear(512, 128), # hidden layer
+            BatchNorm1d(128),#batch normalization
             ReLU(), # activation function
-            Linear(64, 10) # hidden layer to output layer (10 classes for digits 0-9)
+            Dropout(0.1),
+
+            Linear(128, 10) # hidden layer to output layer (10 classes for digits 0-9)
         )
 
     def forward(self, x):
