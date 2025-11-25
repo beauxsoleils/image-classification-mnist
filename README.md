@@ -1,4 +1,4 @@
-# Image Classification Using a Fully-Connected Foward-Feed Neural Network
+# Image Classification Using a Fully-Connected Forward-Feed Neural Network
 This repository serves as a base for my learning journey throughout deep learning and artificial intelligence. 
 I designed the codebase to be as readable and modular as possible for quick modification during learning projects.
 It defines a multilayer perceptron with three hidden layers. We use classic backpropagation on MNIST features for training the model's weights.
