@@ -1,10 +1,12 @@
 [project]
-name = "nn-image-classification"
-version = "0.0.1"
-description = "Trains a neural network on MNIST features. Returns /checkpoint/_.pth to local directory"
+name = "classification"
+version = "0.1.1"
+description = "Training logic for a convolutional neural network."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
   "torch",
+  "torchvision",
+  "tensorboard",
   "tqdm"
 ]
