@@ -5,16 +5,17 @@ The main() script for initializing our model and running training epochs.
 
 """
 
-import torch, utils
+import torch, torchvision
+import torch.nn as nn
+import torch.optim as optim
+import src.utils
 
-from torch import optim, nn
-from model import Model
-from mnist import get_dataloaders
-from train import run_training_loop, evaluate
-from args import build_interface
+from src.cnn import ConvNeuralNet
+from src.args import build_interface
+from src.mnist import get_dataloaders
+from src.train import run_training_loop
 
 from torch.utils.tensorboard import SummaryWriter
-from torchvision.utils import make_grid
 
 def main():
     
@@ -23,16 +24,16 @@ def main():
 
     # Select chipset 
     device = torch.device(
-        "cuda" if torch.cuda.is_available() else "cpu"
+       "cuda" if torch.cuda.is_available() else "cpu"
     )
-
+    
     # Prepare datasets
     training_loader, testing_loader = get_dataloaders(
         batch_size=args.batch_size
     )
 
     # Define model
-    model = Model()
+    model = ConvNeuralNet()
 
     # Initialize loss function
     loss_function = nn.CrossEntropyLoss()
@@ -45,14 +46,8 @@ def main():
         weight_decay=1e-4
     )
     
-    images, labels = next(iter(training_loader))
-    grid = make_grid(images)
-
-    # init SummaryWriter
     tb = SummaryWriter() 
-    tb.add_image("images", grid)
-    tb.add_graph(model, images)
-    
+ 
     # Begin training 
     print("Training Launched")
     print(f"Device: {device}\n")
